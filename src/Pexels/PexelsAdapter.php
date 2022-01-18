@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Chuoke\UnifyGallery\Pexels;
 
-use Chuoke\UnifyGallery\GalleryAdapterTrait;
 use Chuoke\UnifyGallery\GalleryAdapter;
+use Chuoke\UnifyGallery\GalleryAdapterTrait;
 use Chuoke\UnifyGallery\GalleryResponse;
-use Chuoke\UnifyGallery\Pexels\PexelsQueryParams;
 
 /**
  * @see https://www.pexels.com/api/documentation/

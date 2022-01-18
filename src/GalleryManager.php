@@ -2,14 +2,11 @@
 
 namespace Chuoke\UnifyGallery;
 
-use InvalidArgumentException;
-use Chuoke\UnifyGallery\Config;
-use Chuoke\UnifyGallery\Gallery;
-use Chuoke\UnifyGallery\GalleryAdapter;
 use Chuoke\UnifyGallery\Bing\BingAdapter;
 use Chuoke\UnifyGallery\Pexels\PexelsAdapter;
 use Chuoke\UnifyGallery\Pixabay\PixabayAdapter;
 use Chuoke\UnifyGallery\Unsplash\UnsplashAdapter;
+use InvalidArgumentException;
 
 class GalleryManager
 {
@@ -78,7 +75,7 @@ class GalleryManager
 
         $driverMethod = 'create' . ucfirst($name) . 'Driver';
 
-        if (!method_exists($this, $driverMethod)) {
+        if (! method_exists($this, $driverMethod)) {
             throw new InvalidArgumentException("Driver [{$name}] is not supported.");
         }
 

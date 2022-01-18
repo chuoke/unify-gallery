@@ -68,7 +68,7 @@ class PixabayQueryParams extends GalleryQueryParams
      * Accepted values: "true", "false"
      * Default: "false"
      *
-     * @var boolean
+     * @var bool
      */
     public bool $safesearch = true;
 

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Chuoke\UnifyGallery\Bing;
 
+use Chuoke\UnifyGallery\GalleryFormatter;
 use Chuoke\UnifyGallery\GalleryItem;
 use Chuoke\UnifyGallery\GalleryItemLink;
-use Chuoke\UnifyGallery\GalleryFormatter;
 
 class BingFormatter implements GalleryFormatter
 {
@@ -29,7 +29,7 @@ class BingFormatter implements GalleryFormatter
         $baseUri = rtrim($this->gallery->baseUri());
 
         foreach (['url', 'copyrightlink'] as $field) {
-            if (!empty($item[$field]) && strpos($item[$field], 'http') !== 0) {
+            if (! empty($item[$field]) && strpos($item[$field], 'http') !== 0) {
                 $item[$field] = implode('/', [$baseUri, ltrim($item[$field], '/')]);
             }
         }
@@ -37,7 +37,7 @@ class BingFormatter implements GalleryFormatter
         $width = $height = null;
         $w_h = [];
         preg_match('/_(\dx\d)./', $item['url'], $w_h);
-        if (!empty($w_h[1])) {
+        if (! empty($w_h[1])) {
             [$width, $height] = explode('x', $w_h[1]);
         }
 
@@ -63,7 +63,7 @@ class BingFormatter implements GalleryFormatter
                 new GalleryItemLink(
                     url: $item['url'],
                     type: 'large',
-                )
+                ),
             ],
         );
     }

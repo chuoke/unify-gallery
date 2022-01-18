@@ -7,7 +7,6 @@ namespace Chuoke\UnifyGallery\Unsplash;
 use Chuoke\UnifyGallery\GalleryAdapter;
 use Chuoke\UnifyGallery\GalleryAdapterTrait;
 use Chuoke\UnifyGallery\GalleryResponse;
-use Chuoke\UnifyGallery\Unsplash\UnsplashQueryParams;
 
 /**
  * @see https://unsplash.com/documentation
