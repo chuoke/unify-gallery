@@ -71,7 +71,7 @@ class UnsplashFormatter implements GalleryFormatter
             id: $image['id'],
             source: $this->gallery->name(),
             type: 'photo',
-            title: $image['alt_description'] ?: $image['description'],
+            title: (string) ($image['alt_description'] ?: $image['description']),
             copyrighter: $image['user']['name'],
             copyright_link: $image['links']['html'],
             tags: $image['categories'] ?: [],
