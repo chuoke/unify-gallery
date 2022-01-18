@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Chuoke\UnifyGallery\Bing;
 
-use GuzzleHttp\Client;
-use Chuoke\UnifyGallery\GalleryAdapterTrait;
 use Chuoke\UnifyGallery\GalleryAdapter;
+use Chuoke\UnifyGallery\GalleryAdapterTrait;
 use Chuoke\UnifyGallery\GalleryResponse;
+use GuzzleHttp\Client;
 
 class BingAdapter implements GalleryAdapter
 {

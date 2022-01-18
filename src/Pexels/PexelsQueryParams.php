@@ -19,7 +19,7 @@ class PexelsQueryParams extends GalleryQueryParams implements GalleryQueryParams
      * The current supported sizes are:
      *        large(24MP), medium(12MP) or small(4MP).
      */
-    public  $size;
+    public $size;
 
     /**
      * Page number to retrieve. (Optional; default: 1)

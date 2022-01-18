@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Chuoke\UnifyGallery\Pixabay;
 
 use Chuoke\UnifyGallery\GalleryAdapter;
-use Chuoke\UnifyGallery\GalleryResponse;
 use Chuoke\UnifyGallery\GalleryAdapterTrait;
+use Chuoke\UnifyGallery\GalleryResponse;
 
 /**
  * @see https://pixabay.com/api/docs

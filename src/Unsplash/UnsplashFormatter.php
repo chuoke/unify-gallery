@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Chuoke\UnifyGallery\Unsplash;
 
+use Chuoke\UnifyGallery\GalleryFormatter;
 use Chuoke\UnifyGallery\GalleryItem;
 use Chuoke\UnifyGallery\GalleryItemLink;
-use Chuoke\UnifyGallery\GalleryFormatter;
 
 class UnsplashFormatter implements GalleryFormatter
 {
@@ -51,10 +51,10 @@ class UnsplashFormatter implements GalleryFormatter
                 $width = $w[1] ?? null;
                 $height = $h[1] ?? null;
 
-                if (!$width && $height) {
+                if (! $width && $height) {
                     $width = $image['width'] * $height / $image['height'];
                 }
-                if (!$height && $width) {
+                if (! $height && $width) {
                     $height = $image['height'] * $width / $image['width'];
                 }
             }

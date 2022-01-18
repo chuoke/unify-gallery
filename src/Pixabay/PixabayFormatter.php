@@ -45,7 +45,7 @@ class PixabayFormatter implements GalleryFormatter
         foreach ($sizeMap as $key => $targetType) {
             $urlKey = $key . 'URL';
 
-            if (!array_key_exists($urlKey, $image)) {
+            if (! array_key_exists($urlKey, $image)) {
                 continue;
             }
 

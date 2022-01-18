@@ -7,7 +7,6 @@ namespace Chuoke\UnifyGallery\Pexels;
 use Chuoke\UnifyGallery\GalleryFormatter;
 use Chuoke\UnifyGallery\GalleryItem;
 use Chuoke\UnifyGallery\GalleryItemLink;
-use Chuoke\UnifyGallery\Pexels\PexelsAdapter;
 
 class PexelsFormatter implements GalleryFormatter
 {
@@ -52,10 +51,10 @@ class PexelsFormatter implements GalleryFormatter
                 $width = $w[1] ?? null;
                 $height = $h[1] ?? null;
 
-                if (!$width && $height) {
+                if (! $width && $height) {
                     $width = $image['width'] * $height / $image['height'];
                 }
-                if (!$height && $width) {
+                if (! $height && $width) {
                     $height = $image['height'] * $width / $image['width'];
                 }
             }
