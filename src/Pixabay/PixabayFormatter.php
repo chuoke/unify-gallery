@@ -67,8 +67,8 @@ class PixabayFormatter implements GalleryFormatter
             $urls[$targetType] = new GalleryItemLink(
                 url: $url,
                 type: $targetType,
-                width: $width ? round($width) : ($height ? round($originalWidth * $height / $originalHeight) : null),
-                height: $height ? round($height) : ($width ? round($originalHeight * $width / $originalWidth) : null),
+                width: $width ? intval($width) : ($height ? intval(round($originalWidth * $height / $originalHeight)) : null),
+                height: $height ? intval($height) : ($width ? intval(round($originalHeight * $width / $originalWidth)) : null),
                 size: $image[$key . 'Size'] ?? null,
             );
         }
