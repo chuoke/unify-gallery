@@ -43,6 +43,7 @@ class BingFormatter implements GalleryFormatter
 
         $link = new GalleryItemLink(
             url: $item['url'],
+            type: 'large',
             width: $width ? intval($width) : null,
             height: $height ? intval($height) : null,
         );
