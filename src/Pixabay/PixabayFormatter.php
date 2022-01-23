@@ -46,7 +46,7 @@ class PixabayFormatter implements GalleryFormatter
             $urlKey = $key . 'URL';
 
             $url = $image[$urlKey] ?? null;
-            if (!$url) {
+            if (! $url) {
                 continue;
             }
 
