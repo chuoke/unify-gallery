@@ -45,20 +45,25 @@ class PixabayFormatter implements GalleryFormatter
         foreach ($sizeMap as $key => $targetType) {
             $urlKey = $key . 'URL';
 
-            if (! array_key_exists($urlKey, $image)) {
+            $url = $image[$urlKey] ?? null;
+            if (!$url) {
                 continue;
             }
 
-            $width = '';
-            $height = '';
+            $width = null;
+            $height = null;
+
+            $w = [];
+            preg_match('/_(\d{3,})./', $url, $w);
+            $width = $w[1] ?? null;
 
             if ($key !== 'vector') {
-                $$width = $image[$key . 'Width'] ?? null;
+                $$width = $image[$key . 'Width'] ?? $width;
                 $height = $image[$key . 'Height'] ?? null;
             }
 
             $urls[$targetType] = new GalleryItemLink(
-                url: $image[$urlKey],
+                url: $url,
                 type: $targetType,
                 width: $width ? intval($width) : null,
                 height: $height ? intval($height) : null,
