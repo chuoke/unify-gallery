@@ -59,12 +59,7 @@ class BingFormatter implements GalleryFormatter
             copyright_link: $item['copyrightlink'],
             original: $link,
             preview: $link,
-            urls: [
-                new GalleryItemLink(
-                    url: $item['url'],
-                    type: 'large',
-                ),
-            ],
+            urls: [$link],
         );
     }
 
