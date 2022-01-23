@@ -41,6 +41,8 @@ class PixabayFormatter implements GalleryFormatter
         ];
 
         $urls = [];
+        $originalWidth = $image['imageWidth'];
+        $originalHeight = $image['imageHeight'];
 
         foreach ($sizeMap as $key => $targetType) {
             $urlKey = $key . 'URL';
@@ -58,15 +60,15 @@ class PixabayFormatter implements GalleryFormatter
             $width = $w[1] ?? null;
 
             if ($key !== 'vector') {
-                $$width = $image[$key . 'Width'] ?? $width;
+                $width = $image[$key . 'Width'] ?? $width;
                 $height = $image[$key . 'Height'] ?? null;
             }
 
             $urls[$targetType] = new GalleryItemLink(
                 url: $url,
                 type: $targetType,
-                width: $width ? intval($width) : null,
-                height: $height ? intval($height) : null,
+                width: $width ? round($width) : ($height ? round($originalWidth * $height / $originalHeight) : null),
+                height: $height ? round($height) : ($width ? round($originalHeight * $width / $originalWidth) : null),
                 size: $image[$key . 'Size'] ?? null,
             );
         }
