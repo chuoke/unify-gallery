@@ -36,9 +36,9 @@ class BingFormatter implements GalleryFormatter
 
         $width = $height = null;
         $w_h = [];
-        preg_match('/_(\d{1,}x\d{1,})./', $item['url'], $w_h);
+        preg_match('/_(\d{2,}x\d{2,})./', $item['url'], $w_h);
         if (! empty($w_h[1])) {
-            [$width, $height] = explode('x', $w_h[1]);
+            [$width, $height] = explode('x', $w_h[1], 2);
         }
 
         $link = new GalleryItemLink(
