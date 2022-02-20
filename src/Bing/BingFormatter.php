@@ -29,7 +29,7 @@ class BingFormatter implements GalleryFormatter
         $baseUri = rtrim($this->gallery->baseUri());
 
         foreach (['url', 'copyrightlink'] as $field) {
-            if (! empty($item[$field]) && strpos($item[$field], 'http') !== 0) {
+            if (!empty($item[$field]) && strpos($item[$field], 'http') !== 0) {
                 $item[$field] = implode('/', [$baseUri, ltrim($item[$field], '/')]);
             }
         }
@@ -37,7 +37,7 @@ class BingFormatter implements GalleryFormatter
         $width = $height = null;
         $w_h = [];
         preg_match('/_(\d{2,}x\d{2,})./', $item['url'], $w_h);
-        if (! empty($w_h[1])) {
+        if (!empty($w_h[1])) {
             [$width, $height] = explode('x', $w_h[1], 2);
         }
 
@@ -52,11 +52,11 @@ class BingFormatter implements GalleryFormatter
             id: $item['hsh'],
             type: 'image',
             source: $this->gallery->name(),
-            title: $titleAndCopyrighter['title'] ?: $item['title'],
+            title: $titleAndCopyrighter['title'] ?? $item['title'],
             tags: [],
             ext: pathinfo($item['url'], PATHINFO_EXTENSION),
             // for_date: date('Y-m-d', strtotime($item['startdate'])),
-            copyrighter: $titleAndCopyrighter['copyrighter'] ?: $item['copyright'],
+            copyrighter: $titleAndCopyrighter['copyrighter'] ?? $item['copyright'],
             copyright_link: $item['copyrightlink'],
             original: $link,
             preview: $link,
