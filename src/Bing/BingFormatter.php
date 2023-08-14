@@ -29,7 +29,7 @@ class BingFormatter implements GalleryFormatter
         $baseUri = rtrim($this->gallery->baseUri());
 
         foreach (['url', 'copyrightlink'] as $field) {
-            if (!empty($item[$field]) && strpos($item[$field], 'http') !== 0) {
+            if (! empty($item[$field]) && strpos($item[$field], 'http') !== 0) {
                 $item[$field] = implode('/', [$baseUri, ltrim($item[$field], '/')]);
             }
         }
@@ -37,7 +37,7 @@ class BingFormatter implements GalleryFormatter
         $width = $height = null;
         $w_h = [];
         preg_match('/_(\d{2,}x\d{2,})./', $item['url'], $w_h);
-        if (!empty($w_h[1])) {
+        if (! empty($w_h[1])) {
             [$width, $height] = explode('x', $w_h[1], 2);
         }
 
