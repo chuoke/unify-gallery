@@ -37,6 +37,9 @@ class BingQueryParams extends GalleryQueryParams
             'idx' => max(($this->page - 1), 0) * $this->per_page,
             'n' => $this->per_page,
             'mkt' => $this->locale,
+            'uhd' => 1,
+            'uhdwidth' => 3840,
+            'uhdheight' => 2160,
         ];
     }
 }
