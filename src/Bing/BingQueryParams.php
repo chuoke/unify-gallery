@@ -34,7 +34,7 @@ class BingQueryParams extends GalleryQueryParams
 
         return [
             'format' => 'js',
-            'idx' => ($idx = $this->page - 1) > -1 ? $idx : 0,
+            'idx' => max(($this->page - 1), 0) * $this->per_page,
             'n' => $this->per_page,
             'mkt' => $this->locale,
         ];
