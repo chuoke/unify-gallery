@@ -74,7 +74,7 @@ class UnsplashFormatter implements GalleryFormatter
             title: (string) ($image['alt_description'] ?: $image['description']),
             copyrighter: $image['user']['name'],
             copyright_link: $image['links']['html'],
-            tags: $image['categories'] ?: [],
+            tags: $image['categories'] ?? [],
             original: $urls['original'] ?? $urls['large'],
             preview: $urls['medium'] ?? $urls['large'],
             color: $image['color'],
