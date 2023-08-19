@@ -29,7 +29,7 @@ class BingFormatter implements GalleryFormatter
         $baseUri = rtrim($this->gallery->baseUri());
 
         foreach (['url', 'copyrightlink'] as $field) {
-            if (! empty($item[$field]) && strpos($item[$field], 'http') !== 0) {
+            if (!empty($item[$field]) && strpos($item[$field], 'http') !== 0) {
                 $item[$field] = implode('/', [$baseUri, ltrim($item[$field], '/')]);
             }
         }
@@ -37,7 +37,7 @@ class BingFormatter implements GalleryFormatter
         $width = $height = null;
         $w_h = [];
         preg_match('/_(\d{2,}x\d{2,})./', $item['url'], $w_h);
-        if (! empty($w_h[1])) {
+        if (!empty($w_h[1])) {
             [$width, $height] = explode('x', $w_h[1], 2);
         } else {
             $w = [];
@@ -63,11 +63,18 @@ class BingFormatter implements GalleryFormatter
             height: $height ? intval($height) : null,
         );
 
-        $thumbLink = new GalleryItemLink(
-            url: $hdLink->url() . '&pid=hp&w=384&h=216&rs=1&c=4',
+        $largeLink = new GalleryItemLink(
+            url: $hdLink->url() . '&pid=hp&w=2160&rs=1&c=4',
             type: 'tiny',
-            width: $width ? intval($width) : null,
-            height: $height ? intval($height) : null,
+            width: 2160,
+            height: $width ? 2160 / $width * $height : 1080,
+        );
+
+        $thumbLink = new GalleryItemLink(
+            url: $hdLink->url() . '&pid=hp&w=384&rs=1&c=4',
+            type: 'tiny',
+            width: 384,
+            height: $width ? 384 / $width * $height : 216,
         );
 
         return new GalleryItem(
@@ -82,7 +89,7 @@ class BingFormatter implements GalleryFormatter
             copyright_link: $item['copyrightlink'],
             original: $link,
             preview: $thumbLink,
-            urls: [$hdLink, $link, $thumbLink],
+            urls: [$hdLink, $link, $largeLink, $thumbLink],
         );
     }
 
