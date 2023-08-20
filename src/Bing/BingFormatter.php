@@ -64,14 +64,14 @@ class BingFormatter implements GalleryFormatter
         );
 
         $largeLink = new GalleryItemLink(
-            url: $hdLink->url() . '&pid=hp&w=2160&rs=1&c=4',
+            url: $originLink->url() . '&pid=hp&w=2160&rs=1&c=4',
             type: 'large',
             width: 2160,
             height: $width ? 2160 / $width * $height : 1080,
         );
 
         $thumbLink = new GalleryItemLink(
-            url: $hdLink->url() . '&pid=hp&w=384&rs=1&c=4',
+            url: $originLink->url() . '&pid=hp&w=384&rs=1&c=4',
             type: 'tiny',
             width: 384,
             height: $width ? 384 / $width * $height : 216,
