@@ -49,23 +49,23 @@ class BingFormatter implements GalleryFormatter
             $height = $h[1] ?? null;
         }
 
-        $link = new GalleryItemLink(
-            url: $item['url'],
-            type: 'large',
-            width: $width ? intval($width) : null,
-            height: $height ? intval($height) : null,
-        );
-
-        $hdLink = new GalleryItemLink(
+        $originLink = new GalleryItemLink(
             url: explode('&', $item['url'], 2)[0],
             type: 'original',
             width: $width ? intval($width) : null,
             height: $height ? intval($height) : null,
         );
 
+        $hdLink = new GalleryItemLink(
+            url: $item['url'],
+            type: 'hd',
+            width: $width ? intval($width) : null,
+            height: $height ? intval($height) : null,
+        );
+
         $largeLink = new GalleryItemLink(
             url: $hdLink->url() . '&pid=hp&w=2160&rs=1&c=4',
-            type: 'tiny',
+            type: 'large',
             width: 2160,
             height: $width ? 2160 / $width * $height : 1080,
         );
@@ -87,9 +87,9 @@ class BingFormatter implements GalleryFormatter
             // for_date: date('Y-m-d', strtotime($item['startdate'])),
             copyrighter: $titleAndCopyrighter['copyrighter'] ?? $item['copyright'],
             copyright_link: $item['copyrightlink'],
-            original: $link,
+            original: $originLink,
             preview: $thumbLink,
-            urls: [$hdLink, $link, $largeLink, $thumbLink],
+            urls: [$originLink, $hdLink, $largeLink, $thumbLink],
         );
     }
 
