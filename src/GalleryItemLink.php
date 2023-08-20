@@ -18,8 +18,8 @@ class GalleryItemLink implements JsonSerializable
     public function __construct(
         protected string $url,
         protected ?string $type = null,
-        protected ?int $width = null,
-        protected ?int $height = null,
+        protected ?float $width = null,
+        protected ?float $height = null,
         protected ?int $size = null,
     ) {
     }

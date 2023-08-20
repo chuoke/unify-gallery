@@ -26,7 +26,7 @@ class BingFormatter implements GalleryFormatter
     {
         $titleAndCopyrighter = $this->parseTitleAndCopyrighter($item['copyright']);
 
-        $baseUri = rtrim($this->gallery->baseUri());
+        $baseUri = rtrim($this->gallery->baseUri(), '/');
 
         foreach (['url', 'copyrightlink'] as $field) {
             if (!empty($item[$field]) && strpos($item[$field], 'http') !== 0) {
